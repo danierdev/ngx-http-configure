@@ -17,11 +17,14 @@
   "scripts": {
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "pack": "cd dist/ngx-http-configure && npm pack",
+    "package": "npm run build && npm run pack",
+    "publish": "npm publish dist/ngx-http-configure"
   },
   "peerDependencies": {
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0"
+    "@angular/common": "^7.0.0 || ^8.0.0",
+    "@angular/core": "^7.0.0 || ^8.0.0"
   },
   "dependencies": {
     "@angular/common": "^8.0.0",
