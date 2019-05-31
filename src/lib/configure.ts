@@ -1,5 +1,5 @@
 import { HttpParams, HttpRequest } from '@angular/common/http';
-import { HTTP_OPTION_PREFIX, HTTP_OPTIONS_KEYS, HttpConfigureOptions, HttpOptions, HttpReconfiguredOptions } from './http-options';
+import { HTTP_OPTION_PREFIX, HTTP_OPTIONS_KEYS, HttpConfigureOptions, HttpOptions, HttpReconfiguredOptions } from './models';
 import { isObject } from './utils';
 
 export function configure(options: HttpConfigureOptions): HttpOptions {

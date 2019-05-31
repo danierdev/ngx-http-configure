@@ -1,2 +1,2 @@
 export * from './lib/configure';
-export * from './lib/http-options';
+export * from './lib/models';
