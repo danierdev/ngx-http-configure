@@ -1,27 +1,59 @@
-# NgxHttpConfigure
+# Angular Http Configure
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+A cool Angular library for configure http interceptors!
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+$ npm install ng-http-configure
+```
 
-## Code scaffolding
+and then from your Angular service:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```typescript
 
-## Build
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+// Import the configure helper from lib
+import { configure } from 'ng-http-configure';
 
-## Running unit tests
+@Injectable()
+export class UserService {
+  baseUrl: string = 'https://jsonplaceholder.typicode.com';
+  
+  constructor(private http: HttpClient) {}
+  
+  getUsers() {
+    return this.http.get(`/users`, configure({
+      baseUrl: this.baseUrl,
+    }));
+  }
+}
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Once your service method is configured, you can use its options in your interceptor:
 
-## Running end-to-end tests
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+import { reconfigure } from 'ng-http-configure';
 
-## Further help
+/**
+ * Prefixes all requests not starting with `http[s]` with configure `baseUrl`.
+ */
+@Injectable()
+export class ApiPrefixInterceptor implements HttpInterceptor {
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (!/^(http|https):/i.test(request.url)) {
+      let { config, request } = reconfigure(request);
+      request = request.clone({ url: `${config.baseUrl}${request.url}` });
+    }
+    return next.handle(request);
+  }
+}
+```
+

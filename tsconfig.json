@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-http-configure": [
+        "dist/ngx-http-configure"
+      ],
+      "ngx-http-configure/*": [
+        "dist/ngx-http-configure/*"
+      ]
+    }
   }
 }
