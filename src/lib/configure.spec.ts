@@ -42,7 +42,7 @@ describe('Angular Http Configure helpers', () => {
       expect(data).toEqual(testData);
     });
     const req = httpTestingController.expectOne(`${baseUrl}/users?~foo=bar`);
-    const { config, request } = reconfigure(req.request);
+    const { config, request } = reconfigure(req.request, ['foo']);
 
     expect(request.method).toEqual('GET');
     expect(config).toEqual(extraConfig);

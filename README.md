@@ -74,7 +74,9 @@ import { reconfigure } from 'ngx-http-configure';
 export class ApiPrefixInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const { config: { baseUrl }, request } = reconfigure(req);
+    // for multiple interceptors use the optional `selector`
+    const selector = ['baseUrl'];
+    const { config: { baseUrl }, request } = reconfigure(req, selector);
     if (!/^(http|https):/i.test(request.url) && baseUrl) {
       return next.handle(request.clone({ url: `${baseUrl}${request.url}` }));
     }
