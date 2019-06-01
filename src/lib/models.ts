@@ -20,22 +20,17 @@ export const HTTP_OPTIONS_KEYS = [
 
 export const HTTP_OPTION_PREFIX = '~';
 
-interface BaseHttpOptions {
-  body?: any;
+export interface HttpOptions {
   headers?: HttpHeaders | HttpStringMap;
   params?: HttpParams | HttpStringMap;
   reportProgress?: boolean;
-  responseType?: any | HttpResponseType;
   withCredentials?: boolean;
 }
 
-export interface HttpOptions extends BaseHttpOptions {
-  observe: any | HttpObserve;
-}
-
-export interface HttpConfigureOptions extends BaseHttpOptions {
-  observe?: any | HttpObserve;
-  [propName: string]: any;
+export interface HttpConfigureOptions extends HttpOptions {
+  observe?: HttpObserve;
+  responseType?: HttpResponseType;
+  [key: string]: any;
 }
 
 export interface HttpReconfiguredOptions {

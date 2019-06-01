@@ -2,6 +2,7 @@ import { Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { configure, reconfigure } from './configure';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com';
@@ -36,9 +37,8 @@ describe('Angular Http Configure helpers', () => {
     const extraConfig = {
       foo: 'bar',
     };
-    httpClient.get<User[]>(`${baseUrl}/users`, configure({
-      ...extraConfig,
-    })).subscribe((data: any) => {
+    const users$: Observable<User[]> = httpClient.get<User[]>(`${baseUrl}/users`, configure(extraConfig));
+    users$.subscribe((data: any) => {
       expect(data).toEqual(testData);
     });
     const req = httpTestingController.expectOne(`${baseUrl}/users?~foo=bar`);

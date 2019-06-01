@@ -2,18 +2,18 @@ dist: trusty
 sudo: false
 language: node_js
 node_js:
-- '10'
+  - '10'
 addons:
   apt:
     sources:
-    - google-chrome
+      - google-chrome
     packages:
-    - google-chrome-stable
+      - google-chrome-stable
 cache: yarn
 install: yarn
 script:
-- yarn lint
-- yarn test
+  - yarn lint
+  - yarn test
 after_success:
   - yarn build
 before_deploy:

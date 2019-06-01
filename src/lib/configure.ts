@@ -1,8 +1,9 @@
 import { HttpParams, HttpRequest } from '@angular/common/http';
 import { HTTP_OPTION_PREFIX, HTTP_OPTIONS_KEYS, HttpConfigureOptions, HttpOptions, HttpReconfiguredOptions } from './models';
-import { isObject } from './utils';
+import { deepCopy, isObject } from './utils';
 
-export function configure(options: HttpConfigureOptions): HttpOptions {
+export function configure(configs: HttpConfigureOptions): HttpOptions {
+  const options = deepCopy(configs) as HttpOptions;
   Object.keys(options).forEach(key => {
     if (!HTTP_OPTIONS_KEYS.includes(key)) {
       const prefixedKey = `${HTTP_OPTION_PREFIX}${key}`;
@@ -15,7 +16,7 @@ export function configure(options: HttpConfigureOptions): HttpOptions {
       delete options[key];
     }
   });
-  return options as HttpOptions;
+  return options;
 }
 
 export function reconfigure(request: HttpRequest<any>): HttpReconfiguredOptions {

@@ -1,14 +1,36 @@
-# Angular Http Configure
+# NgxHttpConfigure
 
-A cool Angular library for configure http interceptors!
+[![Build Status](https://travis-ci.org/drivas/ngx-http-configure.svg?branch=master)](https://travis-ci.org/drivas/ngx-http-configure)
+[![version](https://img.shields.io/npm/v/ngx-http-configure.svg)](https://www.npmjs.com/package/ngx-http-configure)
+[![license](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ngx-http-configure)
+
+<h1 align="center">
+  <img width="40" valign="bottom" src="https://angular.io/assets/images/logos/angular/angular.svg">
+  ngx-http-configure
+</h1>
+
+<h4 align="center">
+  A cool Angular library for configure http interceptors
+</h4>
+
+## Features
+
+* HttpClient extend configuration
+* Interceptors configuration
 
 ## Installation
 
+To install this library, run:
+
 ```bash
-$ npm install ng-http-configure
+$ npm install ngx-http-configure
 ```
 
-and then from your Angular service:
+## Using the library
+
+Import the `configure()` helper in your injectable service:
+
+The configure function takes the same parameters as the options http request object.
 
 ```typescript
 
@@ -16,7 +38,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // Import the configure helper from lib
-import { configure } from 'ng-http-configure';
+import { configure } from 'ngx-http-configure';
 
 @Injectable()
 export class UserService {
@@ -39,7 +61,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { reconfigure } from 'ng-http-configure';
+import { reconfigure } from 'ngx-http-configure';
 
 /**
  * Prefixes all requests not starting with `http[s]` with configure `baseUrl`.
@@ -57,3 +79,6 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
 }
 ```
 
+## License
+
+MIT © [Danier Rivas](mailto:d_rivas@outlook.com)
