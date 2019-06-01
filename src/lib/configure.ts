@@ -32,4 +32,9 @@ export function reconfigure(request: HttpRequest<any>): HttpReconfiguredOptions 
   return { config, request };
 }
 
+export default {
+  configure,
+  reconfigure,
+};
+
 

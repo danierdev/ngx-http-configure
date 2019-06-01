@@ -4,12 +4,11 @@ type HttpObserve = 'body' | 'events' | 'response' ;
 
 type HttpResponseType = 'arraybuffer' | 'blob' | 'json' | 'text' ;
 
-export interface HttpStringMap {
-  [key: string]: string | string[];
+export interface HttpStringMap<T = string | string[]> {
+  [key: string]: T;
 }
 
 export const HTTP_OPTIONS_KEYS = [
-  'body',
   'headers',
   'observe',
   'params',

@@ -40,14 +40,19 @@ import { HttpClient } from '@angular/common/http';
 import { configure } from 'ngx-http-configure';
 
 @Injectable()
-export class UserService {
+export class PostService {
   baseUrl: string = 'https://jsonplaceholder.typicode.com';
   
   constructor(private http: HttpClient) {}
   
-  getUsers() {
-    return this.http.get(`/users`, configure({
+  getPosts() {
+    return this.http.get(`/posts`, configure({
       baseUrl: this.baseUrl,
+      // Use standard http options
+      params: {
+        _sort: 'views',
+        _order: 'asc',
+      }
     }));
   }
 }
@@ -68,10 +73,10 @@ import { reconfigure } from 'ngx-http-configure';
 @Injectable()
 export class ApiPrefixInterceptor implements HttpInterceptor {
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (!/^(http|https):/i.test(request.url)) {
-      let { config, request } = reconfigure(request);
-      request = request.clone({ url: `${config.baseUrl}${request.url}` });
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const { config: { baseUrl }, request } = reconfigure(req);
+    if (!/^(http|https):/i.test(request.url) && baseUrl) {
+      return next.handle(request.clone({ url: `${baseUrl}${request.url}` }));
     }
     return next.handle(request);
   }
