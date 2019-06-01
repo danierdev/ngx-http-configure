@@ -1,24 +1,29 @@
 dist: trusty
 sudo: false
-
 language: node_js
 node_js:
-  - "10"
-
+- '10'
 addons:
   apt:
     sources:
-      - google-chrome
+    - google-chrome
     packages:
-      - google-chrome-stable
-
-cache:
-  directories:
-    - ./node_modules
-
-install:
-  - npm ci
-
+    - google-chrome-stable
+cache: yarn
+install: yarn
 script:
-  - npm run lint
-  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+- yarn lint
+- yarn test
+after_success:
+  - yarn build
+before_deploy:
+  - cd dist/ngx-http-configure
+deploy:
+  provider: npm
+  email: d_rivas@outlook.com
+  skip_cleanup: true
+  api_key: $NPM_API_KEY
+  on:
+    branch: master
+    tags: true
+    repo: drivas/ngx-http-configure
