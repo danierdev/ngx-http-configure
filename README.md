@@ -1,22 +1,21 @@
-# NgxHttpConfigure
+<div align="center">
+  <img width="64" src="https://angular.io/assets/images/logos/angular/angular.svg">
+  <br />
+  HTTP interceptors / services configure in Angular
+  <br /><br />
 
-[![Build Status](https://travis-ci.org/drivas/ngx-http-configure.svg?branch=master)](https://travis-ci.org/drivas/ngx-http-configure)
-[![version](https://img.shields.io/npm/v/ngx-http-configure.svg)](https://www.npmjs.com/package/ngx-http-configure)
-[![license](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ngx-http-configure)
+  [![Build Status](https://travis-ci.org/drivas/ngx-http-configure.svg?branch=master)](https://travis-ci.org/drivas/ngx-http-configure)
+  [![version](https://img.shields.io/npm/v/ngx-http-configure.svg)](https://www.npmjs.com/package/ngx-http-configure)
+  [![Downloads](http://img.shields.io/npm/dm/ngx-http-configure.svg)](https://npmjs.org/package/ngx-http-configure)
+  [![license](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ngx-http-configure)
+</div>
 
-<h1 align="center">
-  <img width="40" valign="bottom" src="https://angular.io/assets/images/logos/angular/angular.svg">
-  ngx-http-configure
-</h1>
+---
 
-<h4 align="center">
-  A cool Angular library for configure http interceptors
-</h4>
+# ngx-http-configure
 
-## Features
+Ngx HTTP configure is a library for Angular that helps you reconfigure your interceptors in a clear and concise way by extending the HttpClient API
 
-* HttpClient extend configuration
-* Interceptors configuration
 
 ## Installation
 
