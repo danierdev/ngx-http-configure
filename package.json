@@ -1,6 +1,6 @@
 {
   "name": "ngx-http-configure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular (6+) helpers for configure HTTP interceptors and services.",
   "repository": {
     "type": "git",
