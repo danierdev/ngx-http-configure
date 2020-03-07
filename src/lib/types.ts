@@ -8,17 +8,6 @@ export interface HttpStringMap<T = string | string[]> {
   [key: string]: T;
 }
 
-export const HTTP_OPTIONS_KEYS = [
-  'headers',
-  'observe',
-  'params',
-  'reportProgress',
-  'responseType',
-  'withCredentials',
-];
-
-export const HTTP_OPTION_PREFIX = '~';
-
 export interface HttpOptions {
   headers?: HttpHeaders | HttpStringMap;
   params?: HttpParams | HttpStringMap;
@@ -33,6 +22,6 @@ export interface HttpConfigureOptions extends HttpOptions {
 }
 
 export interface HttpReconfiguredOptions {
-  config: HttpStringMap;
+  config: Record<string, any>;
   request: HttpRequest<any>;
 }

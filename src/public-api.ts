@@ -1,2 +1,3 @@
+export * from './lib/types';
 export * from './lib/configure';
-export * from './lib/models';
+export * from './lib/reconfigure';
