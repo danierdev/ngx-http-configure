@@ -1,25 +1,27 @@
+os: linux
+
 language: node_js
+
 node_js: 10
 
 cache: yarn
 
 install: yarn --frozen-lockfile
+
 script:
   - yarn lint
   - yarn test
 
-jobs:
-  include:
-    - stage: npm release
-      if: tag IS present
-      node_js: 10
-      script: yarn build
-      before_deploy:
-        - cd dist/ngx-http-configure
-      deploy:
-        provider: npm
-        email: $NPM_EMAIL
-        api_key: $NPM_API_KEY
-        skip_cleanup: true
-        on:
-          tags: true
+after_success:
+  - yarn build
+
+before_deploy:
+  - cd dist/ngx-http-configure
+
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_token: $NPM_API_KEY
+  cleanup: true
+  on:
+    tags: true
