@@ -12,10 +12,8 @@ script:
   - yarn lint
   - yarn test
 
-after_success:
-  - yarn build
-
 before_deploy:
+  - yarn build
   - cd dist/ngx-http-configure
 
 deploy:
