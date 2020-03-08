@@ -1,4 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Type } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
@@ -31,8 +32,8 @@ describe('Angular Http Configure helpers', () => {
       imports: [HttpClientTestingModule]
     });
 
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.get(HttpClient as Type<HttpClient>);
+    httpTestingController = TestBed.get(HttpTestingController as Type<HttpTestingController>);
   });
 
   afterEach(() => {

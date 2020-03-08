@@ -1,23 +1,13 @@
-<div align="center">
-  <img width="64" src="https://angular.io/assets/images/logos/angular/angular.svg">
-  <br />
-  HTTP interceptors / services configure in Angular
-  <br /><br />
+## HTTP interceptors / services configure in Angular
 
-  [![Build Status](https://travis-ci.org/drivas/ngx-http-configure.svg?branch=master)](https://travis-ci.org/drivas/ngx-http-configure)
-  [![version](https://img.shields.io/npm/v/ngx-http-configure.svg)](https://www.npmjs.com/package/ngx-http-configure)
-  [![Downloads](http://img.shields.io/npm/dm/ngx-http-configure.svg)](https://npmjs.org/package/ngx-http-configure)
-  [![license](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ngx-http-configure)
-</div>
-
----
-
-# ngx-http-configure
+[![Build Status](https://travis-ci.org/drivas/ngx-http-configure.svg?branch=master)](https://travis-ci.org/drivas/ngx-http-configure)
+[![version](https://img.shields.io/npm/v/ngx-http-configure.svg)](https://www.npmjs.com/package/ngx-http-configure)
+[![Downloads](http://img.shields.io/npm/dm/ngx-http-configure.svg)](https://npmjs.org/package/ngx-http-configure)
+[![license](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/ngx-http-configure)
 
 Ngx HTTP configure is a library for Angular that helps you reconfigure your interceptors in a clear and concise way by extending the HttpClient API
 
-
-## Installation
+### Installation
 
 To install this library, run:
 
@@ -25,7 +15,7 @@ To install this library, run:
 $ npm install ngx-http-configure
 ```
 
-## Using the library
+### Using the library
 
 Import the `configure()` helper in your injectable service:
 
@@ -85,6 +75,6 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
 }
 ```
 
-## License
+### License
 
 MIT © [Danier Rivas](mailto:d_rivas@outlook.com)
