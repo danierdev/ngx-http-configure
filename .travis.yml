@@ -14,7 +14,7 @@ script:
 
 before_deploy:
   - yarn build
-  - cd dist/ngx-http-configure
+  - cd dist
 
 deploy:
   provider: npm
